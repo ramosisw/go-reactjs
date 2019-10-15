@@ -1,6 +1,7 @@
 FROM node:12.2.0-alpine as frontend
 WORKDIR /src
 ENV PATH /src/node_modules/.bin:$PATH
+ENV NODE_ENV production
 
 COPY frontend/ .
 RUN \
@@ -9,7 +10,7 @@ RUN \
     npm run build
 
 FROM golang:1.13-alpine as backend
-LABEL maintainer="Julio Ramos <ramos.isw@gmail.com>"
+
 RUN apk add git gcc build-base
 
 # ENV CGO_ENABLED     0
@@ -18,16 +19,23 @@ ENV GOOS            linux
 # ENV GOARCH          amd64
 # ENV GO111MODULE     on
 
-WORKDIR /go/src/github.com/jramos/golang-reactjs
+WORKDIR /go/src/github.com/jramos/go-reactjs
 ADD . .
+COPY --from=frontend /src/build/ frontend/build
+RUN \
+    go get github.com/go-bindata/go-bindata/go-bindata && \
+    go get github.com/elazarl/go-bindata-assetfs/go-bindata-assetfs
+RUN \
+    cd frontend && \
+    go-bindata-assetfs -pkg frontend build/...
+
 RUN go install -v -ldflags "-s -w"
 
 FROM alpine as final
+LABEL maintainer="Julio Ramos <ramos.isw@gmail.com>"
 RUN apk add --no-cache ca-certificates
-ENV PATH_FRONTEND /usr/bin/static
-COPY --from=frontend /src/build/ /usr/bin/static
-COPY --from=backend /go/bin/golang-reactjs /usr/bin/golang-reactjs
+COPY --from=backend /go/bin/go-reactjs /usr/bin/go-reactjs
 
 EXPOSE 80
 VOLUME ["/data/"]
-ENTRYPOINT golang-reactjs
+ENTRYPOINT go-reactjs
