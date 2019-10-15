@@ -2,24 +2,27 @@ package models
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
 
 var db *gorm.DB
 
+//Init the connection with database
 func Init() {
 	ConnectDatabase()
 }
 
+//ConnectDatabase Connect to database, read/create sqlite file db
 func ConnectDatabase() error {
 	var err error
-	db, err = gorm.Open("sqlite3", "/data/db.db")
+	os.MkdirAll("/data", os.ModePerm)
+	db, err = gorm.Open("sqlite3", "/data/go-reactjs.db")
 	if err != nil {
 		return fmt.Errorf("error in connectDatabase(): %v", err)
 	}
-	db.AutoMigrate(&Event{}) // ok for development, suggest using Goblin for more complex requirements.
+	db.AutoMigrate(&Todo{})
 	db.LogMode(true)
 	return nil
 }

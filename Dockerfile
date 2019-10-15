@@ -27,7 +27,7 @@ RUN \
     go get github.com/elazarl/go-bindata-assetfs/go-bindata-assetfs
 RUN \
     cd frontend && \
-    go-bindata-assetfs -pkg frontend build/...
+    go-bindata-assetfs -pkg=frontend -nocompress=false build/...
 
 RUN go install -v -ldflags "-s -w"
 

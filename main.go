@@ -9,8 +9,9 @@ import (
 	"github.com/jramos/go-reactjs/handler"
 	"github.com/jramos/go-reactjs/models"
 
-	"github.com/elazarl/go-bindata-assetfs"
+	assetfs "github.com/elazarl/go-bindata-assetfs"
 	"github.com/gorilla/mux"
+	_ "github.com/jinzhu/gorm/dialects/sqlite" //sqlite3
 )
 
 const assetPrefix = "build"
@@ -27,16 +28,24 @@ func assetFS() *assetfs.AssetFS {
 func main() {
 	models.Init()
 	router := mux.NewRouter().StrictSlash(true)
-	router.HandleFunc("/event", handler.CreateEvent).Methods("POST")
-	router.HandleFunc("/events", handler.GetAllEvents).Methods("GET")
-	router.HandleFunc("/event/{id}", handler.GetOneEvent).Methods("GET")
+
+	router.Use(commonMiddleware)
+	router.HandleFunc("/todo", handler.PostTodo).Methods("POST")
+	router.HandleFunc("/todo", handler.GetTodos).Methods("GET")
+	router.HandleFunc("/todo/{id}", handler.PutTodo).Methods("PUT")
+	router.HandleFunc("/todo/{id}", handler.GetTodo).Methods("GET")
 
 	router.PathPrefix("/").Handler(
 		http.FileServer(assetFS()),
 	)
-	// http.Handle("/", http.FileServer(assetFS()))
 
-	// fmt.Printf("Frontend loaded from: [%v]\n", pathFrontend)
 	fmt.Println("GO REST server running on http://localhost ")
 	log.Fatal(http.ListenAndServe(":80", router))
+}
+
+func commonMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Add("Content-Type", "application/json")
+		next.ServeHTTP(w, r)
+	})
 }
