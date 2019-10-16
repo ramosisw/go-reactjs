@@ -1,3 +1,10 @@
+/*
+* MIT License
+*
+* Copyright (c) 2019 Julio C. Ramos
+*
+ */
+
 package main
 
 import (

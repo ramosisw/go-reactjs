@@ -1,3 +1,11 @@
+/*
+* MIT License
+*
+* Copyright (c) 2019 Julio C. Ramos
+*
+ */
+
+//Package handler include todo handlers to common REST methods
 package handler
 
 import (

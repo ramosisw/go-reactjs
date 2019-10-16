@@ -1,3 +1,11 @@
+/*
+* MIT License
+*
+* Copyright (c) 2019 Julio C. Ramos
+*
+ */
+
+//Package models include db conection and todo model to persist with database
 package models
 
 import (
