@@ -51,7 +51,7 @@ func GetTodo(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-//PutTodo Returns a todo by ID
+//PutTodo Update a todo by ID
 func PutTodo(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Endpoint Hit: PutTodo")
 	todoID, _ := strconv.Atoi(mux.Vars(r)["id"])
