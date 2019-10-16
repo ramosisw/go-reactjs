@@ -33,7 +33,7 @@ todo-go-reactjs
 ## Build with go script
 Run
 ```sh
-go run ./build
+go run ./gobuild
 ```
 
 Example
