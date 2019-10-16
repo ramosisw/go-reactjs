@@ -9,7 +9,7 @@ import (
 
 	"github.com/gorilla/mux"
 
-	"github.com/jramos/go-reactjs/models"
+	"github.com/ramosisw/go-reactjs/models"
 )
 
 //PostTodo create a todo

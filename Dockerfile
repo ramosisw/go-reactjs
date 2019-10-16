@@ -19,7 +19,7 @@ ENV GOOS            linux
 # ENV GOARCH          amd64
 # ENV GO111MODULE     on
 
-WORKDIR /go/src/github.com/jramos/go-reactjs
+WORKDIR /go/src/github.com/ramosisw/go-reactjs
 ADD . .
 COPY --from=frontend /src/build/ frontend/build
 RUN \

@@ -20,5 +20,5 @@ IF ($buildFrontend -eq $true) {
 }
 
 if (($buildFrontend -ne $true) -or ($LASTEXITCODE -eq 0)) {
-    go install -v; if ($LASTEXITCODE -eq 0) { go-reactjs.exe }
+    go install -v -ldflags "-s -w"; if ($LASTEXITCODE -eq 0) { go-reactjs.exe }
 }

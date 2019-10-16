@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/jramos/go-reactjs/frontend"
-	"github.com/jramos/go-reactjs/handler"
-	"github.com/jramos/go-reactjs/models"
+	"github.com/ramosisw/go-reactjs/frontend"
+	"github.com/ramosisw/go-reactjs/handler"
+	"github.com/ramosisw/go-reactjs/models"
 
 	assetfs "github.com/elazarl/go-bindata-assetfs"
 	"github.com/gorilla/mux"
