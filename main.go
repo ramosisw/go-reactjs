@@ -6,16 +6,16 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/ramosisw/go-reactjs/frontend"
-	"github.com/ramosisw/go-reactjs/handler"
-	"github.com/ramosisw/go-reactjs/models"
+	"github.com/ramosisw/todo-go-reactjs/frontend"
+	"github.com/ramosisw/todo-go-reactjs/handler"
+	"github.com/ramosisw/todo-go-reactjs/models"
 
 	assetfs "github.com/elazarl/go-bindata-assetfs"
 	"github.com/gorilla/mux"
 	_ "github.com/jinzhu/gorm/dialects/sqlite" //sqlite3
 )
 
-const assetPrefix = "build"
+const assetPrefix = "frontend/build/"
 
 func assetFS() *assetfs.AssetFS {
 	return &assetfs.AssetFS{

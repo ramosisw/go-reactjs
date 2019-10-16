@@ -18,7 +18,7 @@ func Init() {
 func ConnectDatabase() error {
 	var err error
 	os.MkdirAll("/data", os.ModePerm)
-	db, err = gorm.Open("sqlite3", "/data/go-reactjs.db")
+	db, err = gorm.Open("sqlite3", "/data/todo-go-reactjs.db")
 	if err != nil {
 		return fmt.Errorf("error in connectDatabase(): %v", err)
 	}
