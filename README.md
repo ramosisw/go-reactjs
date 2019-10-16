@@ -1,6 +1,8 @@
 # todo-go-reactjs
 Todo application with Go as Backend and ReactJS as Frontend
 
+![Todo List](https://raw.githubusercontent.com/ramosisw/todo-go-reactjs/master/screenshots/todo-list.png)
+
 ## How to build frontend
 The following Go dependencies are required to compile
 

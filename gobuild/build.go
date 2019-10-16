@@ -14,7 +14,7 @@ import (
 	"strings"
 )
 
-//Command type
+//Command type to exec on command line
 type Command struct {
 	Name string
 	Args []string
