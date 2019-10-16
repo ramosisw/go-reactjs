@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  gr-demo:
+    image: ramosisw/gr-demo:dev
+    hostname: gr-demo
+    container_name: gr-demo
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4080:80"
+    volumes:
+      - ./volumes/data/:/data/
+    environment:
+      - NODE_ENV=production
+    # entrypoint: sh
+    # command: [""]
