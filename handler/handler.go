@@ -67,5 +67,7 @@ func PutTodo(w http.ResponseWriter, r *http.Request) {
 func GetTodos(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Endpoint Hit: GetTodos")
 	todos, _ := models.ListTodos()
-	json.NewEncoder(w).Encode(todos)
+	prettyJSON, _ := json.MarshalIndent(todos, "", "    ")
+	fmt.Fprint(w, string(prettyJSON))
+	// json.NewEncoder(w).Encode(todos)
 }

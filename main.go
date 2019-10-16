@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
 
 	"github.com/jramos/go-reactjs/frontend"
 	"github.com/jramos/go-reactjs/handler"
@@ -30,10 +31,10 @@ func main() {
 	router := mux.NewRouter().StrictSlash(true)
 
 	router.Use(commonMiddleware)
-	router.HandleFunc("/todo", handler.PostTodo).Methods("POST")
-	router.HandleFunc("/todo", handler.GetTodos).Methods("GET")
-	router.HandleFunc("/todo/{id}", handler.PutTodo).Methods("PUT")
-	router.HandleFunc("/todo/{id}", handler.GetTodo).Methods("GET")
+	router.HandleFunc("/_api/todo", handler.PostTodo).Methods("POST")
+	router.HandleFunc("/_api/todo", handler.GetTodos).Methods("GET")
+	router.HandleFunc("/_api/todo/{id}", handler.PutTodo).Methods("PUT")
+	router.HandleFunc("/_api/todo/{id}", handler.GetTodo).Methods("GET")
 
 	router.PathPrefix("/").Handler(
 		http.FileServer(assetFS()),
@@ -45,7 +46,14 @@ func main() {
 
 func commonMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Add("Content-Type", "application/json")
+		fmt.Printf("request URL Path %v \n", r.URL.Path)
+		if strings.HasPrefix(r.URL.Path, "/_api") {
+			w.Header().Add("Access-Control-Allow-Origin", "*")
+			w.Header().Add("Content-Type", "application/json")
+			if r.Method == "OPTIONS" {
+				w.Header().Add("Access-Control-Allow-Headers", "Authorization") // You can add more headers here if needed
+			}
+		}
 		next.ServeHTTP(w, r)
 	})
 }
