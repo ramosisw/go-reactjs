@@ -5,6 +5,7 @@
 *
  */
 
+//Script to build application
 package main
 
 import (
