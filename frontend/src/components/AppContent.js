@@ -34,7 +34,7 @@ const styles = theme => ({
             backgroundColor: red[400],
         },
         position: 'absolute',
-        bottom: theme.spacing(2),
+        top: theme.spacing(4) * -1,
         right: theme.spacing(2),
     },
 });
@@ -42,7 +42,9 @@ const styles = theme => ({
 class AppContent extends React.Component {
 
     state = {
-        openForm: false
+        openForm: false,
+        showForm: false,
+        todo: {}
     }
 
     componentDidMount() {
@@ -50,19 +52,28 @@ class AppContent extends React.Component {
     }
 
     openForm = () => {
-        this.setState({ openForm: true })
+        this.setState({ openForm: true, showForm: true })
     }
 
-    openDetail = () => {
-        this.setState({ openForm: true })
+    newForm = () => {
+        this.setState({ openForm: true, showForm: true, todo: {} })
+    }
+
+    openDetail = (todo) => {
+        this.setState({ openForm: true, showForm: true, todo })
     }
 
     closeForm = () => {
-        this.setState({ openForm: false })
+        this.setState({ openForm: false, showForm: true })
+        setTimeout(() => {
+            this.setState({ showForm: false })
+            this.props.dispatch(todoActions.get());
+        }, 500);
     }
 
     render() {
         const { classes, data } = this.props;
+        const { todo } = this.state;
         return (
             <main className={classes.layout}>
                 <div className={classes.appBarSpacer} />
@@ -70,15 +81,15 @@ class AppContent extends React.Component {
 
                     <Grid container spacing={1}>
                         {data && data.map((m, key) => (
-                            <Grid item md={4} key={key} onClick={this.openDetail} > 
+                            <Grid item xs={12} sm={6} md={4} lg={3} key={key} onClick={() => this.openDetail(m)} >
                                 <AppCard todo={m} />
                             </Grid>)
                         )}
-                        <Fab className={classes.fab} onClick={this.openForm} >
+                        <Fab className={classes.fab} onClick={this.newForm} >
                             <AddIcon />
                         </Fab>
                     </Grid>
-                    <FormDialog open={this.state.openForm} onClose={this.closeForm} />
+                    {this.state.showForm && <FormDialog open={this.state.openForm} onClose={this.closeForm} todo={todo} />}
                 </div>
             </main>
         )

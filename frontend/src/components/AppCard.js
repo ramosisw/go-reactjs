@@ -5,14 +5,13 @@ import Moment from 'react-moment';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
     card: {
-        maxWidth: 345,
+        // minWidth: 200,
+        // maxWidth: 345,
         marginBottom: theme.spacing(1),
     },
     subheader: {
@@ -52,8 +51,7 @@ function AppCard(props) {
 }
 
 AppCard.propTypes = {
-    classes: PropTypes.object.isRequired,
-    onClick: PropTypes.func.isRequired
+    classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(AppCard);
