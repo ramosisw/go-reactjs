@@ -14,7 +14,7 @@ import (
 	"strings"
 
 	"github.com/ramosisw/todo-go-reactjs/frontend"
-	"github.com/ramosisw/todo-go-reactjs/handler"
+	"github.com/ramosisw/todo-go-reactjs/handlers"
 	"github.com/ramosisw/todo-go-reactjs/models"
 
 	assetfs "github.com/elazarl/go-bindata-assetfs"
