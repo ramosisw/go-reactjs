@@ -106,7 +106,7 @@ func frontendBuildAssetManifestJson() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "frontend/build/asset-manifest.json", size: 754, mode: os.FileMode(438), modTime: time.Unix(1571288260, 0)}
+	info := bindataFileInfo{name: "frontend/build/asset-manifest.json", size: 754, mode: os.FileMode(438), modTime: time.Unix(1571288921, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -146,7 +146,7 @@ func frontendBuildIndexHtml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "frontend/build/index.html", size: 2150, mode: os.FileMode(438), modTime: time.Unix(1571288260, 0)}
+	info := bindataFileInfo{name: "frontend/build/index.html", size: 2150, mode: os.FileMode(438), modTime: time.Unix(1571288921, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -226,7 +226,7 @@ func frontendBuildPrecacheManifestFf1cd97d3ef55de680f3ca4b3fd5bec3Js() (*asset, 
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "frontend/build/precache-manifest.ff1cd97d3ef55de680f3ca4b3fd5bec3.js", size: 442, mode: os.FileMode(438), modTime: time.Unix(1571288260, 0)}
+	info := bindataFileInfo{name: "frontend/build/precache-manifest.ff1cd97d3ef55de680f3ca4b3fd5bec3.js", size: 442, mode: os.FileMode(438), modTime: time.Unix(1571288921, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -266,7 +266,7 @@ func frontendBuildServiceWorkerJs() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "frontend/build/service-worker.js", size: 1183, mode: os.FileMode(438), modTime: time.Unix(1571288260, 0)}
+	info := bindataFileInfo{name: "frontend/build/service-worker.js", size: 1183, mode: os.FileMode(438), modTime: time.Unix(1571288921, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -286,7 +286,7 @@ func frontendBuildStaticJs2Df3d1213ChunkJs() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "frontend/build/static/js/2.df3d1213.chunk.js", size: 409812, mode: os.FileMode(438), modTime: time.Unix(1571288260, 0)}
+	info := bindataFileInfo{name: "frontend/build/static/js/2.df3d1213.chunk.js", size: 409812, mode: os.FileMode(438), modTime: time.Unix(1571288921, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -306,7 +306,7 @@ func frontendBuildStaticJs2Df3d1213ChunkJsMap() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "frontend/build/static/js/2.df3d1213.chunk.js.map", size: 1657625, mode: os.FileMode(438), modTime: time.Unix(1571288260, 0)}
+	info := bindataFileInfo{name: "frontend/build/static/js/2.df3d1213.chunk.js.map", size: 1657625, mode: os.FileMode(438), modTime: time.Unix(1571288921, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -326,7 +326,7 @@ func frontendBuildStaticJsMain3cde071dChunkJs() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "frontend/build/static/js/main.3cde071d.chunk.js", size: 7106, mode: os.FileMode(438), modTime: time.Unix(1571288260, 0)}
+	info := bindataFileInfo{name: "frontend/build/static/js/main.3cde071d.chunk.js", size: 7106, mode: os.FileMode(438), modTime: time.Unix(1571288921, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -346,7 +346,7 @@ func frontendBuildStaticJsMain3cde071dChunkJsMap() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "frontend/build/static/js/main.3cde071d.chunk.js.map", size: 26283, mode: os.FileMode(438), modTime: time.Unix(1571288260, 0)}
+	info := bindataFileInfo{name: "frontend/build/static/js/main.3cde071d.chunk.js.map", size: 26283, mode: os.FileMode(438), modTime: time.Unix(1571288921, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -366,7 +366,7 @@ func frontendBuildStaticJsRuntimeMainFca44c8bJs() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "frontend/build/static/js/runtime-main.fca44c8b.js", size: 1557, mode: os.FileMode(438), modTime: time.Unix(1571288260, 0)}
+	info := bindataFileInfo{name: "frontend/build/static/js/runtime-main.fca44c8b.js", size: 1557, mode: os.FileMode(438), modTime: time.Unix(1571288921, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -386,7 +386,7 @@ func frontendBuildStaticJsRuntimeMainFca44c8bJsMap() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "frontend/build/static/js/runtime-main.fca44c8b.js.map", size: 8355, mode: os.FileMode(438), modTime: time.Unix(1571288260, 0)}
+	info := bindataFileInfo{name: "frontend/build/static/js/runtime-main.fca44c8b.js.map", size: 8355, mode: os.FileMode(438), modTime: time.Unix(1571288921, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
