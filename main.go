@@ -14,7 +14,7 @@ import (
 	"strings"
 
 	"github.com/ramosisw/todo-go-reactjs/frontend"
-	"github.com/ramosisw/todo-go-reactjs/handlers"
+	handler "github.com/ramosisw/todo-go-reactjs/handlers"
 	"github.com/ramosisw/todo-go-reactjs/models"
 
 	assetfs "github.com/elazarl/go-bindata-assetfs"
@@ -53,14 +53,20 @@ func main() {
 
 func commonMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		fmt.Printf("request URL Path %v \n", r.URL.Path)
+		fmt.Printf("%s URL Path %v \n", r.Method, r.URL.Path)
 		if strings.HasPrefix(r.URL.Path, "/_api") {
 			w.Header().Add("Access-Control-Allow-Origin", "*")
 			w.Header().Add("Content-Type", "application/json")
 			if r.Method == "OPTIONS" {
-				w.Header().Add("Access-Control-Allow-Headers", "Authorization") // You can add more headers here if needed
+				fmt.Println("### OPTIONS REQUESTED")
+				w.Header().Add("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE") // You can add more headers here if needed
+				w.Header().Add("Access-Control-Allow-Headers", "Authorization")       // You can add more headers here if needed
+				w.WriteHeader(http.StatusOK)
+			} else {
+				next.ServeHTTP(w, r)
 			}
+		} else {
+			next.ServeHTTP(w, r)
 		}
-		next.ServeHTTP(w, r)
 	})
 }

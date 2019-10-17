@@ -44,6 +44,7 @@ class AppContent extends React.Component {
     state = {
         openForm: false,
         showForm: false,
+        editMode: false,
         todo: {}
     }
 
@@ -51,16 +52,12 @@ class AppContent extends React.Component {
         this.props.dispatch(todoActions.get());
     }
 
-    openForm = () => {
-        this.setState({ openForm: true, showForm: true })
-    }
-
     newForm = () => {
-        this.setState({ openForm: true, showForm: true, todo: {} })
+        this.setState({ openForm: true, showForm: true, editMode: false, todo: {} })
     }
 
-    openDetail = (todo) => {
-        this.setState({ openForm: true, showForm: true, todo })
+    editForm = (todo) => {
+        this.setState({ openForm: true, showForm: true, editMode: true, todo })
     }
 
     closeForm = () => {
@@ -81,7 +78,7 @@ class AppContent extends React.Component {
 
                     <Grid container spacing={1}>
                         {data && data.map((m, key) => (
-                            <Grid item xs={12} sm={6} md={4} lg={3} key={key} onClick={() => this.openDetail(m)} >
+                            <Grid item xs={12} sm={6} md={4} lg={3} key={key} onClick={() => this.editForm(m)} >
                                 <AppCard todo={m} />
                             </Grid>)
                         )}
@@ -89,7 +86,7 @@ class AppContent extends React.Component {
                             <AddIcon />
                         </Fab>
                     </Grid>
-                    {this.state.showForm && <FormDialog open={this.state.openForm} onClose={this.closeForm} todo={todo} />}
+                    {this.state.showForm && <FormDialog open={this.state.openForm} edit={this.state.editMode} onClose={this.closeForm} todo={todo} />}
                 </div>
             </main>
         )

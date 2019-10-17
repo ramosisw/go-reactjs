@@ -1,10 +1,10 @@
 version: '3.4'
 
 services:
-  gr-demo:
-    image: ramosisw/gr-demo:dev
-    hostname: gr-demo
-    container_name: gr-demo
+  todo-go-reactjs:
+    image: ramosisw/todo-go-reactjs
+    hostname: todo-go-reactjs
+    container_name: todo-go-reactjs
     build:
       context: .
       dockerfile: Dockerfile
@@ -12,7 +12,3 @@ services:
       - "4080:80"
     volumes:
       - ./volumes/data/:/data/
-    environment:
-      - NODE_ENV=production
-    # entrypoint: sh
-    # command: [""]

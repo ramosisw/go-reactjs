@@ -10,6 +10,7 @@ package main
 
 import (
 	"log"
+	"os"
 	"os/exec"
 	"strings"
 )
@@ -29,6 +30,13 @@ func main() {
 		{"npm", []string{"run", "build"}, "frontend"},
 		{"go-bindata-assetfs", []string{"-pkg=frontend", "-nocompress=false", "-o=frontend/frontend.go", "frontend/build/..."}, ""},
 		{"go", []string{"build", "-v", "-ldflags", "-s -w"}, ""},
+	}
+	//Remove previus frontend if exists
+
+	if _, err := os.Stat("frontend/frontend.go"); os.IsExist(err) {
+		if err := os.Remove("frontend/frontend.go"); err != nil {
+			log.Fatalf("Error: %v", err)
+		}
 	}
 
 	log.Println("Building please wait...")
