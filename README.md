@@ -48,3 +48,9 @@ Example
 2019/10/16 16:39:52 Runing: go-bindata-assetfs -pkg=frontend -nocompress=false -o=frontend/frontend.go frontend/build/...
 2019/10/16 16:39:52 Runing: go build -v -ldflags -s -w
 ``` 
+
+## Run from docker
+```sh
+docker run --rm ramosisw/todo-go-reactjs -p 8080:80
+```
+and open http://localhost:8080 if you use docker-machie probably hosted on http://192.168.99.10:8080
